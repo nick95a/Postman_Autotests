@@ -1,0 +1,32 @@
+pm.test("Status code is 200"), function() {
+    pm.response.to.have.status(200);
+}
+
+pm.test("Your test name", function () {
+    var jsonData = pm.response.json();
+    pm.expect(jsonData["chartName"]).to.eql("Bitcoin");
+});
+
+pm.test("Check server name", () => {
+    pm.expect(pm.response.headers.get("Server")).to.eql("nginx/1.18.0");
+});
+
+pm.test("Check USD currency description", () => {
+    pm.expect(pm.response.json().bpi["USD"]["description"]).to.eql("United States Dollar");
+
+});
+
+pm.test("Check GBP currency description", () => {
+    pm.expect(pm.response.json().bpi["GBP"]["description"]).to.eql("British Pound Sterling");
+
+});
+
+pm.test("Check GBP currency description", () => {
+    pm.expect(pm.response.json().bpi["GBP"]["description"]).to.eql("British Pound Sterling");
+
+});
+
+pm.test("Check EUR currency description", () => {
+    pm.expect(pm.response.json().bpi["EUR"]["description"]).to.eql("Euro");
+
+});
